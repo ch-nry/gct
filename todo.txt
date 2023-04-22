@@ -1,0 +1,5 @@
+version 1.0 : initial commit
+latter : 
+-proper makefile
+-adding a possibility to scale the velocity
+-test with 4 or 5 axes Gcode
