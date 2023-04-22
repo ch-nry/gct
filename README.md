@@ -1,4 +1,4 @@
-﻿# cgt (Gcode Tool)
+﻿# gct (Gcode Tool)
 gct is a tool to change the scale and offset of a Gcode file
 it's a very simple command line tool, but fast and effective
 
