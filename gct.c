@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
 	}
 	
 	while(fgets(line, MAX_LINE_LENGTH, textfile)){ // for all lines
-		if((line[0] == 'G') && (line[1] == '1'))  {
+		if(line[0] == 'G')   {
 			//printf(line);  // la ligne  commence par G1
 			i=3;
 			while ( (line[i] != ';')  && (line[i] != '\n') ) {
@@ -227,14 +227,15 @@ int main(int argc, char** argv) {
 	if(newtextfile == NULL){
       printf("Error!, can not write file");   
       return 1;
-   }
-	
+   	}
+
 	while(fgets(line, MAX_LINE_LENGTH, textfile)){ // for all lines
-		if( !((line[0] == 'G') && (line[1] == '1')) ) {
+		if( !((line[0] == 'G') && ((line[1] == '0') || (line[1] == '1'))) ) 
+		{
 			fprintf(newtextfile, "%s", line); // the line did not start with G1 : we just copy without modification
 		}
 		else {// the line start with G1 : we analyse it and recreate it after coordinates moduifications
-			fprintf(newtextfile, "G1 ");
+        fprintf(newtextfile, "G%c ", line[1]); // Écrit G0 ou G1 selon ce qui était lu
 			i=3;
 			while (line[i] != '\n') {
 				switch (line[i]) {
